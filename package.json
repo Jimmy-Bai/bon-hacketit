@@ -2,24 +2,31 @@
   "name": "bon_hacketit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
     "http": "0.0.1-security",
     "moment": "^2.27.0",
-    "mongoose": "^5.10.4",
+    "mongoose": "^5.10.5",
+    "nodemon": "^2.0.4",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "socketio": "^1.0.0",
+    "url": "^0.11.0"
   }
 }
