@@ -66,6 +66,7 @@ App.use(Session({
 
 // Routes
 App.use('/', require('./routes/index')(Io));
+App.use('/users', require('./routes/users')(Io));
 // App.use('/users', require('./routes/users'));
 
 // Add port for app
