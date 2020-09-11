@@ -6,9 +6,12 @@ const Mongoose = require('mongoose');
 const Http = require('http');
 const Session = require('express-session');
 const Passport = require('passport');
-const Flash = require('connect-flash');
+const Multer = require('multer');
+const GridStorage = require('multer-gridfs-storage');
+const GridStream = require('gridfs-stream');
 const Socket = require('socket.io');
 const SessionStore = require('connect-mongodb-session')(Session);
+const Flash = require('connect-flash');
 
 require('dotenv').config();
 
@@ -41,9 +44,17 @@ App.set('view engine', 'handlebars');
 App.use('/public', Express.static('public'));
 
 // Connect to MongoDB
-Mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MongooseConnection = Mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch((error) => console.log(error));
+
+// Initialize GFS
+// let gfs;
+// MongooseConnection.once('open', () => {
+//     gfs = new Mongoose.mongo.GridFSBucket(MongooseConnection.db, {
+//         bucketName: 'uploads'
+//     });
+// });
 
 // Create session store on MongoDB
 const Store = new SessionStore({
@@ -67,7 +78,6 @@ App.use(Session({
 // Routes
 App.use('/', require('./routes/index')(Io));
 App.use('/users', require('./routes/users')(Io));
-// App.use('/users', require('./routes/users'));
 
 // Add port for app
 Server.listen(PORT, () => {
