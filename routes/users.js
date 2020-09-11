@@ -1,10 +1,8 @@
 const Express = require('express');
 const Bcrypt = require('bcryptjs');
 const Passport = require('passport');
-const Multer = require('multer');
-const GridStorage = require('multer-gridfs-storage');
-const GridStream = require('gridfs-stream');
-const { Collection } = require('mongoose');
+const Fs = require('fs');
+const Path = require('path');
 
 const Router = Express.Router();
 
@@ -19,15 +17,21 @@ module.exports = function(io) {
 
     // Signup POST request
     Router.post('/signup', async (req, res) => {
+        // Parse input from form
         const {
             username: _username,
-            password: _password
+            password: _password,
+            password2: _password2
         } = req.body;
 
         const _uuid = Date.now().valueOf();
+        console.log(req.image);
+
         console.log(`Username: ${_username}`);
         console.log(`Password: ${_password}`);
+        console.log(`Password 2: ${_password2}`);
         console.log(`UUID: ${_uuid}`);
+        res.redirect('/users/signup');
     });
 
     // Sign in POST request

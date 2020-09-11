@@ -15,6 +15,10 @@ const UserSchema = new Mongoose.Schema({
         type: String,
         required: true
     },
+    pfp: {
+        type: String,
+        default: 'default.png'
+    },
     uuid: {
         type: Number,
         required: true
