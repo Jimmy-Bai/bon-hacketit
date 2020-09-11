@@ -17,6 +17,7 @@ module.exports = function(io) {
         res.render('signin');
     });
 
+    // Signup POST request
     Router.post('/signup', async (req, res) => {
         const {
             username: _username,
@@ -27,6 +28,17 @@ module.exports = function(io) {
         console.log(`Username: ${_username}`);
         console.log(`Password: ${_password}`);
         console.log(`UUID: ${_uuid}`);
+    });
+
+    // Sign in POST request
+    Router.post('/signin', async (req, res) => {
+        const {
+            username: _username,
+            password: _password
+        } = req.body;
+
+        console.log(`Username: ${_username}`);
+        console.log(`Password: ${_password}`);
     });
 
     return Router;
