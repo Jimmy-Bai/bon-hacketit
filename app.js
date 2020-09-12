@@ -76,6 +76,7 @@ App.use(Passport.session());
 // Routes
 App.use('/', require('./routes/index')(Io));
 App.use('/users', require('./routes/users')(Io));
+App.use('/post', require('./routes/post')(Io));
 
 // Add port for app
 Server.listen(PORT, () => {
