@@ -1,13 +1,12 @@
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
-//Get the button:
-mybutton = document.getElementById("topBtn");
 function scrollFunction() {
   if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-    mybutton.style.display = "block";
+    // Use jQuery to change visibility of element
+    $("#topBtn").removeClass("invisible");
   } else {
-    mybutton.style.display = "none";
+    $("#topBtn").addClass("invisible");
   }
 }
 
