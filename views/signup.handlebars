@@ -1,21 +1,22 @@
-Sign up
-
-<form method="POST" action="/users/signup" name="signup" enctype="multipart/form-data">
-    Username:
-    <br>
-    <input type="text" name="username" placeholder="Username..." required>
-    <br>
-    Password:
-    <br>
-    <input type="text" name="password" placeholder="Password..." required>
-    <br>
-    Confirm Your Password:
-    <br>
-    <input type="text" name="password2" placeholder="Re-type password..." required>
-    <br>
-    Upload a profile picture (optional):
-    <br>
-    <input type="file" id="image" name="image" value="" >
-    <br>
-    <input type="submit" value="Submit">
+<form action="/users/signup" method="POST" name="signup" enctype="multipart/form-data">
+    <div class="container">
+        <br>
+        <label for="username"><b>Username</b></label>
+        <br>
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <br>
+        <label for="username"><b>Password</b></label>
+        <br>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        <br>
+        <label for="username"><b>Re-type your password</b></label>
+        <br>
+        <input type="password" placeholder="Enter Password" name="password2" required>
+        <br>
+		<label for="username"><b>Upload a profile picture (optional)</b></label>
+        <br>
+		<input type="file" id="image" name="image" value="">
+        <br>
+        <button type="submit">Login</button>
+    </div>
 </form>

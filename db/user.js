@@ -1,4 +1,5 @@
 const Mongoose = require('mongoose');
+const { Buffer } = require('safe-buffer');
 
 // Create schema
 // User schema
@@ -16,8 +17,8 @@ const UserSchema = new Mongoose.Schema({
         required: true
     },
     pfp: {
-        type: String,
-        default: 'default.png'
+        data: Buffer,
+        contentType: String
     },
     uuid: {
         type: Number,
