@@ -129,11 +129,19 @@
         {{!-- Filters --}}
         <div class="col-2">
             {{!-- Post Filters --}}
-            <div class="btn-group-vertical sticky-top" style="top: 15vh" role="group" aria-label="Vertical button group">
-                <button type="button" class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Trending</button>
-                <button type="button" class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Following</button>
-                <button type="button" class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Suggested</button>
-                <button type="button" class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Foodhub Premium</button>
+            <div class="row-2 sticky-top" style="top: 15vh; padding-left: 3vw">
+                <div id="navBtns" class="btn-group-vertical btn-group-toggle sticky-top" role="group" aria-label="Vertical button group">
+                    <button class="btn btn-light btn-block teal lighten-3 active" onclick="this.blur();">Trending</button>
+                    <button class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Following</button>
+                    <button class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Suggested</button>
+                    <button class="btn btn-light btn-block teal lighten-3" onclick="this.blur();">Foodhub Premium</button>
+                </div>
+            </div>
+            <div class="row-2 sticky-top" style="top: 80vh; padding-left: 3vw">
+                <button id="topBtn" class="btn btn-light btn-block mdb-color lighten-4" onclick="this.blur(); topFunction();" style="display: none">
+                    Top
+                </button>
+            </div>
             </div>
         </div>
     </div>
