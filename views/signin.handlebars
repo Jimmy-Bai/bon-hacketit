@@ -1,11 +1,14 @@
- <form action="/users/signin" method="post" name="signin">
-	<div class="container">
-		<label for="username"><b>Username</b></label>
-		<input type="text" placeholder="Enter Username" name="username" required>
-		
-		<label for="username"><b>Password</b></label>
-		<input type="password" placeholder="Enter Password" name="password" required>
+<div class='container'>
+    {{>alerts}}
+    <form action="/users/signin" method="post" name="signin">
+        <div class="container">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
 
-		<button type="submit">Login</button>
-	</div>
-</form> 
+            <label for="username"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</div>

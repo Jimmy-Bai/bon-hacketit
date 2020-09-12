@@ -12,6 +12,7 @@ const SessionStore = require('connect-mongodb-session')(Session);
 const Flash = require('connect-flash');
 
 require('dotenv').config();
+require('./utils/passport').Initialize(Passport);
 
 // Handlebars property to allow prototype access
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
@@ -64,6 +65,13 @@ App.use(Session({
     resave: true,
     saveUninitialized: true
 }));
+
+// Setting up connect flash
+App.use(Flash());
+
+// Setting up Passport
+App.use(Passport.initialize());
+App.use(Passport.session());
 
 // Routes
 App.use('/', require('./routes/index')(Io));

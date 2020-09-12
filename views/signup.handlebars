@@ -1,22 +1,25 @@
-<form action="/users/signup" method="POST" name="signup" enctype="multipart/form-data">
-    <div class="container">
-        <br>
-        <label for="username"><b>Username</b></label>
-        <br>
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <br>
-        <label for="username"><b>Password</b></label>
-        <br>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <br>
-        <label for="username"><b>Re-type your password</b></label>
-        <br>
-        <input type="password" placeholder="Enter Password" name="password2" required>
-        <br>
-		<label for="username"><b>Upload a profile picture (optional)</b></label>
-        <br>
-		<input type="file" id="image" name="image" value="">
-        <br>
-        <button type="submit">Login</button>
-    </div>
-</form>
+<div class='container'>
+    {{>alerts}}
+    <form action="/users/signup" method="POST" name="signup" enctype="multipart/form-data">
+        <div class="container">
+            <br>
+            <label for="username"><b>Username</b></label>
+            <br>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <br>
+            <label for="username"><b>Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <br>
+            <label for="username"><b>Re-type your password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" name="password2" required>
+            <br>
+            <label for="username"><b>Upload a profile picture (optional)</b></label>
+            <br>
+            <input type="file" id="image" name="image" value="">
+            <br>
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+</div>
