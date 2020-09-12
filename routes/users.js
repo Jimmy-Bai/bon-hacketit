@@ -100,10 +100,29 @@ module.exports = function (io) {
 
     // Sign in POST request
     Router.post('/signin', (req, res, next) => {
-        Passport.authenticate('local', {
-            successRedirect: '/dashboard',
-            failureRedirect: '/users/signin',
-            failureFlash: true
+        // Passport.authenticate('local', {
+        //     successRedirect: '/dashboard',
+        //     failureRedirect: '/users/signin',
+        //     failureFlash: true
+        // })(req, res, next);
+        let msg = [];
+        Passport.authenticate('local', function (err, user, info) {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+
+            if (!user) {
+                msg.push(info);
+                // return res.redirect('/users/signin');
+                return res.render('signin', {
+                    msg: msg
+                });
+            }
+            req.logIn(user, function (err) {
+                if (err) { return next(err); }
+                return res.redirect('/dashboard');
+            });
         })(req, res, next);
     });
 

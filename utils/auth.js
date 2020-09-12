@@ -4,10 +4,7 @@ function EnsureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-
-  res.render('signin', {
-    msg: ['Please login to continue!']
-  });
+  res.redirect('/users/signin');
 }
 
 // Redirect user to dashboard if user is already logged in

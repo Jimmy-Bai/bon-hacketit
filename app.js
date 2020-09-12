@@ -78,6 +78,11 @@ App.use('/', require('./routes/index')(Io));
 App.use('/users', require('./routes/users')(Io));
 App.use('/post', require('./routes/post')(Io));
 
+// Setting up 404 page
+App.use((req, res) => {
+    res.status(404).render('404');
+  });
+
 // Add port for app
 Server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
