@@ -5,7 +5,7 @@ function EnsureAuthenticated(req, res, next) {
     return next();
   }
 
-  res.redirect('/users/signin', {
+  res.render('signin', {
     msg: ['Please login to continue!']
   });
 }
