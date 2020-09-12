@@ -5,6 +5,7 @@ const Handlebars = require('handlebars');
 const Mongoose = require('mongoose');
 const Http = require('http');
 const Session = require('express-session');
+const Multer = require('multer');
 const Passport = require('passport');
 const Socket = require('socket.io');
 const SessionStore = require('connect-mongodb-session')(Session);
