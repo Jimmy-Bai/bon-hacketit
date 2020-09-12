@@ -1,0 +1,29 @@
+<div class='container'>
+    {{>alerts}}
+
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+    <input type="file" accept="image/*" name=image" id=file" style="display: none;">
+    
+    <p><label>Dish Name</label></p>
+    <input type="text" name="dish">
+    
+    <p><label>Restaurant</label></p>
+    <input type="text" name="restaurant">
+    
+    <p><label>Description</label></p>
+    <input type="text" name="description">
+
+    <p><label>Cost</label></p>
+    <input type="text" name="cost">
+
+    <!--
+    <form method="POST" action="/users/signup" name="postrestaraunt">
+        Image:<br> <input type="image" name="image"><br>
+        Restaraunt:<br> <input type="text" name="restaraunt"><br>
+        Item:<br> <input type="text" name="item"><br>
+        Price:<br> <input type="text" name="price"><br>
+        Description:<br> <input type="text" name="desciption"><br>
+    <input type="submit" value="Submit">
+    </form>
+    -->
+</div>
