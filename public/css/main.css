@@ -2,6 +2,15 @@
     border-bottom: 0px !important;
 }
 
-html, body {
+html, body, .fh {
     height: 100% !important;
+    min-height: 100% !important;
+}
+
+.force-center {
+    min-height: 652px;
+}
+
+.modal-dialog {
+    min-width: 500px;
 }
