@@ -1,6 +1,7 @@
 <!--Navbar -->
 <nav class="mb-0 navbar navbar-expand-lg sticky-top navbar-light teal lighten-4">
     {{!-- <a class="navbar-brand" href="#">Foodhub</a> --}}
+    {{!-- Left Side --}}
     <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -10,9 +11,19 @@
                 <a class="nav-link" href="/dashboard">Saved</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/post">Post</a>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Post</a>
+                    <div class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" href="#">Restaurant</a>
+                        <a class="dropdown-item" href="#">Homemade</a>
+                    </div>
+                </div>
+            </li>
+            <li>
             </li>
         </ul>
+
+        {{!-- Right Side --}}
         <ul class="navbar-nav ml-auto nav-flex-icons">
             {{!-- Search --}}
             <form class="form-inline my-2 my-lg-0 ml-auto">
@@ -25,7 +36,7 @@
             <li class="nav-item avatar">
                 <a class="nav-link p-0" href="#">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-                        alt="avatar image" height="35">
+                                                                                       alt="avatar image" height="35">
                 </a>
             </li>
             {{!-- Login --}}
