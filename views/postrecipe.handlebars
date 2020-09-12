@@ -1,15 +1,26 @@
-<form action="" method="post" name="postrecipe">
-	<div>
-		<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-		<input type="file" accept="image/*" name=image" id=file" style="display: none;">
+<div class='container'>
+	<div class="modal-content">
+		<div class="modal-header mb-0">
+			<h5 class="modal-title">Post Restaurant</h5>
+		</div>
+
+		<div class="modal-body py-0">
+			{{>alerts}}
+			<form action="" method="post" name="postrecipe">
+			<div>
+			<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+			<input type="file" accept="image/*" name=image" id=file" style="display: none;">
 		
-		<p><label>Dish Name</label></p>
-		<input type="text" name="dish">
+			<p><label>Dish Name</label></p>
+			<input type="text" name="dish">
 		
-		<p><label>Recipe</label></p>
-		<input type="text" name="recipe">
+			<p><label>Recipe</label></p>
+			<input type="text" name="recipe">
 		
-		<p><label>Description</label></p>
-		<input type="text" name="description">
+			<p><label>Description</label></p>
+			<input type="text" name="description">
+			</div>
+			</form>
+		</div>
 	</div>
-</form>
+</div>
