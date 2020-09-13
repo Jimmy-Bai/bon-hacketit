@@ -5,11 +5,11 @@
 				<div class="card-body">
 						<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
 							alt="avatar image">
-						<h5 class="card-title">Bob Ross</h5>
+						<h5 class="card-title">{{username}}</h5>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">Posts 3</li>
-							<li class="list-group-item">Followers 0</li>
-							<li class="list-group-item">Following 0</li>
+							<li class="list-group-item">Followers {{follower_list.length}}</li>
+							<li class="list-group-item">Following {{following_list.length}}</li>
 						</ul>
 				</div>
 			</div>
@@ -18,9 +18,9 @@
 				<div class="card-body overflow-auto">
 					<h5 class="card-title">Followers</h5>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">John Doe</li>
-						<li class="list-group-item">Stephen Park</li>
-						<li class="list-group-item">Tony Chin</li>
+						{{#each follower_list}}
+							<li class="list-group-item">{{this}}</li>
+						{{/each}}
 					</ul>
 				</div>
 			</div>
@@ -29,9 +29,9 @@
 				<div class="card-body overflow-auto">
 					<h5 class="card-title">Following</h5>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">John Doe</li>
-						<li class="list-group-item">Stephen Park</li>
-						<li class="list-group-item">Tony Chin</li>
+						{{#each following_list}}
+						<li class="list-group-item">{{this}}</li>
+						{{/each}}
 					</ul>
 				</div>
 			</div>
@@ -69,11 +69,7 @@
 					<!-- Subtitle -->
 					<h6 class="font-weight-bold indigo-text py-2">Restaurant</h6>
 					<!-- Text -->
-					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem
-						perspiciatis
-						voluptatum a, quo nobis, non commodi quia repellendus sequi nulla voluptatem dicta
-						reprehenderit, placeat
-						laborum ut beatae ullam suscipit veniam.
+					<p class="card-text">
 					</p>
 				</div>
 			</div>

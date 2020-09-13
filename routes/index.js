@@ -8,6 +8,7 @@ const { EnsureAuthenticated, ForwardAuthenticated } = require('../utils/auth');
 const Router = Express.Router();
 
 const UserSchema = require('../db/user');
+const UserProfileSchema = require('../db/user_profile');
 const PostRestaurantSchema = require('../db/post_restaurant');
 
 // Multer setup
@@ -59,9 +60,15 @@ module.exports = function (io) {
     });
 
     // Profile page
-    Router.get('/dashboard/profile', EnsureAuthenticated, (req, res) => {
+    Router.get('/dashboard/profile', EnsureAuthenticated, async (req, res) => {
+
+        let _user_profile = await UserProfileSchema.findOne({ uuid: req.user.uuid});
+        console.log(_user_profile);
         res.render('profile', {
-            authenticated: req.isAuthenticated()
+            authenticated: req.isAuthenticated(),
+            username: _user_profile.username,
+            following_list: _user_profile.following_list,
+            follower_list: _user_profile.follower_list,
         });
     });
 

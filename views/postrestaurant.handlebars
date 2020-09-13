@@ -5,26 +5,6 @@
         </div>
         <div class="modal-body py-0">
             {{>alerts}}
-<<<<<<< HEAD
-            <form method="POST" action="/users/signup" name="postrestaraunt">
-                <p><label>Restaurant</label></p>
-                <input type="text" name="restaurant">
-                
-                
-                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                <input type="file" accept="image/*" name=image" id=file" style="display: none;">
-
-                <p><label>Dish 1 Name</label></p>
-                <input type="text" name="dish1">
-
-                <p><label>Dish 1 Description</label></p>
-                <input type="text" name="description1">
-
-                <p><label>Dish 1 Cost</label></p>
-                <input type="text" name="cost1">
-
-                
-=======
             <form method="POST" action="/post/restaurant" name="postrestaraunt" runat="server" enctype="multipart/form-data">
                 {{!-- Restaurant Name --}}
                 <div class="form-group md-form">
@@ -90,7 +70,6 @@
     function addItems() {
         var currentCount = $('.restaurant-item').length;
         var nextCount = currentCount + 1;
->>>>>>> 103e26612651bbe3f6a6416342ba01f1dfa25ad9
 
         var $restaurantItem = $('#restaurant-item-1').clone().prop('id', 'restaurant-item-' + nextCount);
 
