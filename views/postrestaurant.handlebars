@@ -5,7 +5,7 @@
         </div>
         <div class="modal-body py-0">
             {{>alerts}}
-            <form method="POST" action="/post/restaurant" name="postrestaraunt" runat="server">
+            <form method="POST" action="/post/restaurant" name="postrestaraunt" runat="server" enctype="multipart/form-data">
                 {{!-- Restaurant Name --}}
                 <div class="form-group md-form">
                     <label for="restaurant">Restaurant</label>
@@ -19,16 +19,9 @@
                                 <div class="custom-file">
                                     <label for="1">
                                         <img src="/public/uploads/post_restaurant/default.png" class="img-thumbnail"
-                                            id="upload1">
+                                            id="upload1" style="height: 256px; width: 256px;">
                                     </label>
-                                    <!-- <input type="file" multiple class="custom&#45;file&#45;input d&#45;none thumbnail" name="image" id="1"> -->
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" multiple class="custom-file-input d-none thumbnail" id="1" name="image"
-                                                                                         aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
+                                    <input type="file" multiple class="custom-file-input d-none thumbnail" name="image" id="1">
                                 </div>
                             </div>
                         </div>
@@ -84,11 +77,17 @@
         $restaurantItem.find("label[for='1']").prop('for', nextCount);
         $restaurantItem.find("img").prop('id', 'upload' + nextCount);
         $restaurantItem.find("input[type='file']").prop('id', nextCount);
+        $restaurantItem.find("img").prop('src', '/public/uploads/post_restaurant/default.png');
+        $restaurantItem.find("input[name='dish']").val('');
+        $restaurantItem.find("input[name='description']").val('');
+        $restaurantItem.find("input[name='price']").val('');
+        $restaurantItem.find("input[name='image']").val('');
+        $restaurantItem.find("textarea").val('');
         $restaurantItem.insertAfter('div.restaurant-item:last');
     }
 
     $(function () {
-        $(".thumbnail").on('change', '.restaurant-item', function () {
+        $(document).on('change', '.thumbnail', function () {
             console.log(this.id);
             renderImage(this, this.id);
         });
