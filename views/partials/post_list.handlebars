@@ -14,7 +14,8 @@
                         <div class="col-lg-3 col-md-3 col-6">
                             <a href="#" class="d-block mb-4 h-100">
                                 <img class="img-fluid img-thumbnail p-0"
-                                    src='/public/uploads/post_restaurant/{{this.image}}' style="height: 256px; width: 256px;">
+                                    src='/public/uploads/post_restaurant/{{this.image}}'
+                                    style="height: 256px; width: 256px;">
                             </a>
                         </div>
                         {{/each}}
@@ -23,7 +24,9 @@
                         <!-- Card content -->
                         <div class="card-body card-body-cascade text-center">
                             <!-- Title -->
-                            <h4 class="card-title"><strong>{{this.restaurant_name}}</strong></h4>
+                            <a href='/post/{{this.post_uuid}}'>
+                                <h4 class="card-title"><strong>{{this.restaurant_name}}</strong></h4>
+                            </a>
                             <!-- Subtitle -->
                             <h6 class="font-weight-bold indigo-text py-2">Posted on {{this.date}}</h6>
                             <!-- Text -->
