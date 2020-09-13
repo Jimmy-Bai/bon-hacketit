@@ -4,7 +4,7 @@ const { EnsureAuthenticated, ForwardAuthenticated } = require('../utils/auth');
 
 const Router = Express.Router();
 
-module.exports = function(io) {
+module.exports = function (io) {
     // Make restaurant form post
     Router.get('/restaurant', (req, res) => {
         res.render('postrestaurant');
@@ -20,8 +20,8 @@ module.exports = function(io) {
         res.render('postrestaurant');
     });
 
-    // Individual post page
-    Router.get('/uuid', (req, res) => {
+    // Home page after login
+    Router.get('/post', (req, res) => {
         res.render('post');
     });
 
