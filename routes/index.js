@@ -33,9 +33,12 @@ const Upload = Multer({ storage: Storage });
 
 module.exports = function (io) {
     // Homepage before login
-    Router.get('/', ForwardAuthenticated, (req, res) => {
+    Router.get('/', ForwardAuthenticated, async (req, res) => {
+        _post = await PostRestaurantSchema.find();
+
         res.render('index', {
-            authenticated: req.isAuthenticated()
+            authenticated: req.isAuthenticated(),
+            post_list: _post
         });
     });
 
@@ -47,7 +50,6 @@ module.exports = function (io) {
             _user = await UserSchema.findOne({ uuid: req.user.uuid });
             _post = await PostRestaurantSchema.find();
         }
-        console.log(_post);
 
         res.render('dashboard', {
             authenticated: req.isAuthenticated(),
