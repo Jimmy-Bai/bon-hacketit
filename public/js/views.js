@@ -26,3 +26,6 @@ function topFunction() {
 $('.carousel').carousel({
   interval: false,
 });
+
+// Add active class to one of the carousel items
+$("#cstart").addClass("active");
