@@ -1,42 +1,39 @@
-<div class="container-fluid pb-4 mb-5">
+<div class="container-fluid pb-4 mb-5 force-center">
     {{!-- Carousel --}}
     <div id="carouselExampleControls" class="carousel slide" data-interval="false" id="postsCarousel">
         <div class="carousel-inner">
-
+            {{!-- Restaurant --}}
+            <h1 class="display-4 strong m-3 text-center">
+                <strong>{{restaurant_name}}</strong>
+            </h1>
             {{#each item_list}}
             {{!-- Item One --}}
-            <div class="carousel-item active">
+            <div class="carousel-item">
                 <div class="col-12 d-block w-100" style="padding-left: 20vw; padding-right: 20vw">
-                    {{!-- Restaurant --}}
-                    <div class="row justify-content-left mt-0">
-                        <h1 class="display-4 strong mt-3">
-                            <strong>{{../restaurant_name}}</strong>
-                        </h1>
-                    </div>
                     {{!-- Title --}}
-                    <div class="row justify-content-left mt-0">
+                    <div class="row justify-content-center mt-0 text-center">
                         <h1 class="display-4 strong">
-                            <small class="text-muted">{{name}} Buns</small>
+                            <small class="text-muted">{{name}}</small>
                         </h1>
                     </div>
 
                     {{!-- Photo --}}
                     <div class="row justify-content-center mt-3">
                         <figure class="figure img-fluid">
-                            <img src="/public/imgs/buns.jpg" class="figure-img img-fluid z-depth-1" alt="..."
-                                                                                                    style="width: 400px">
+                            <img src="/public/uploads/post_restaurant/{{image}}" class="figure-img img-fluid z-depth-1"
+                                alt="..." style="width: 400px">
                         </figure>
                     </div>
 
                     {{!-- Details --}}
                     <div class="row p-2 d-flex mt-0 border border-dark light-green lighten-4"
-                         style="margin-left: 10vw; margin-right: 10vw;">
+                        style="margin-left: 10vw; margin-right: 10vw;">
 
                         {{!-- Profile Picture --}}
                         <div class="px-2">
                             <a class="nav-link p-0" href="#0">
-                                <img src="/public/imgs/notemily.jpg" class="rounded-circle z-depth-0" alt="avatar image"
-                                                                                                      height="45">
+                                <img src="/public/uploads/pfp/{{../pfp}}" class="rounded-circle z-depth-0"
+                                    alt="avatar image" height="45">
                             </a>
                         </div>
 
@@ -64,8 +61,8 @@
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active ml-auto mr-2 text-center" style="width: 10vw"
-                                                                                    id="pills-home-tab" data-toggle="pill" href="#pills-home1" role="tab"
-                                                                                                                                               aria-controls="pills-home" aria-selected="true">Description</a>
+                                    id="pills-home-tab" data-toggle="pill" href="#pills-home1" role="tab"
+                                    aria-controls="pills-home" aria-selected="true">Description</a>
                             </li>
                             {{!-- <li class="nav-item">
                                 <a class="nav-link mr-auto ml-2 text-center" style="width: 10vw" id="pills-profile-tab"
@@ -75,16 +72,16 @@
                         </ul>
                         <div class="tab-content pt-2 pl-1" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home1" role="tabpanel"
-                                                                                    aria-labelledby="pills-home-tab">
-                                    {{description}}
+                                aria-labelledby="pills-home-tab">
+                                {{description}}
                             </div>
                             {{!-- <div class="tab-pane fade" id="pills-profile1" role="tabpanel"
                                 aria-labelledby="pills-profile-tab"></div> --}}
                         </div>
                     </div>
                 </div>
-            {{/each}}
             </div>
+            {{/each}}
         </div>
 
         {{!-- Carousel Navigation --}}
@@ -100,3 +97,7 @@
         </a>
     </div>
 </div>
+<script>
+    $('.carousel-item').first().addClass('active');
+    console.log($('.carousel-item').first());
+</script>

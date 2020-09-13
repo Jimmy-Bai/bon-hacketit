@@ -105,7 +105,7 @@ module.exports = function (io) {
     let _uuid = req.params.uuid;
     let _post = await PostRestaurantSchema.findOne({ post_uuid: _uuid });
     let _author = await UserProfileSchema.findOne({ uuid: _post.user_uuid });
-    console.log(_uuid);
+    let _user = await UserSchema.findOne({ uuid: _post.user_uuid });
 
     // Check if post exists in database
     if (!_post) {
@@ -123,7 +123,8 @@ module.exports = function (io) {
       star_list: _post.star_list,
       perm_tag: _post.perm_tag,
       comments_list: _post.comments_list,
-      author: _author.username
+      author: _author.username,
+      pfp: _user.pfp
     });
   });
 
