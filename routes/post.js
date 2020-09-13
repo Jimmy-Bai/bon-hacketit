@@ -14,5 +14,10 @@ module.exports = function(io) {
         res.render('postrecipe');
     });
 
+    // Home page after login
+    Router.get('/post', (req, res) => {
+    res.render('post');
+    });
+
     return Router;
 };
