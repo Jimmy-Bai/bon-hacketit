@@ -8,6 +8,7 @@ const { EnsureAuthenticated, ForwardAuthenticated } = require('../utils/auth');
 const Router = Express.Router();
 
 const UserSchema = require('../db/user');
+const PostRestaurantSchema = require('../db/post_restaurant');
 
 // Multer setup
 const Storage = Multer.diskStorage({
@@ -40,15 +41,18 @@ module.exports = function (io) {
 
     // Home page after login
     Router.get('/dashboard', EnsureAuthenticated, async (req, res) => {
-        let _user;
+        let _user, _post;
         // If user is authenticated, get user information
         if (req.isAuthenticated) {           
             _user = await UserSchema.findOne({ uuid: req.user.uuid });
+            _post = await PostRestaurantSchema.find();
         }
+        console.log(_post);
 
         res.render('dashboard', {
             authenticated: req.isAuthenticated(),
-            pfp: `/public/uploads/pfp/${_user.pfp}`
+            pfp: `/public/uploads/pfp/${_user.pfp}`,
+            post_list: _post
         });
     });
 
