@@ -36,13 +36,13 @@ const Upload = Multer({ storage: Storage });
 module.exports = function (io) {
     Router.get('/signup', ForwardAuthenticated, (req, res) => {
         res.render('signup', {
-            authenticated: req.isAuthenticated() ? true : false
+            authenticated: req.isAuthenticated()
         });
     });
 
     Router.get('/signin', ForwardAuthenticated, (req, res) => {
         res.render('signin', {
-            authenticated: req.isAuthenticated() ? true : false
+            authenticated: req.isAuthenticated()
         });
     });
 
