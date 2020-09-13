@@ -5,21 +5,21 @@
 		</div>
 		<div class="modal-body py-0">
 			{{>alerts}}
-			<form method="POST" action="/post/restaurant" name="postrestaraunt" runat="server"
+			<form method="POST" action="/post/recipe" name="postrecipe" runat="server"
 				enctype="multipart/form-data">
-				{{!-- Restaurant Name --}}
+				{{!-- Recipe Name --}}
 				<div class="form-group md-form">
-					<label for="restaurant">Restaurant</label>
-					<input type="text" class="form-control" name="restaurant" id="restaurant" required>
+					<label for="recipe">recipe</label>
+					<input type="text" class="form-control" name="recipe" id="recipe" required>
 				</div>
 				{{!-- Item card --}}
 				<div class="container px-0">
-					<div class="row restaurant-item" id="restaurant-item-1">
+					<div class="row recipe-item" id="recipe-item-1">
 						<div class="col-3">
 							<div class="form-group">
 								<div class="custom-file">
 									<label for="1">
-										<img src="/public/uploads/post_restaurant/default.png" class="img-thumbnail"
+										<img src="/public/uploads/post_recipe/default.png" class="img-thumbnail"
 											id="upload1" style="height: 256px; width: 256px;">
 									</label>
 									<input type="file" multiple class="custom-file-input d-none thumbnail" name="image"
@@ -48,7 +48,7 @@
 				<div class="form-group row mt-2">
 					<button type="submit" class="btn btn-dark teal darken-3 ml-4">Post!</button>
 					<button type="button" class="btn btn-light light-green lighten-4 ml-auto mr-4"
-						id="add-post-restaurant" onclick="addItems()">Add</button>
+						id="add-post-recipe" onclick="addItems()">Add</button>
 				</div>
 			</form>
 		</div>
@@ -70,22 +70,22 @@
 
 	// Add more another item group
 	function addItems() {
-		var currentCount = $('.restaurant-item').length;
+		var currentCount = $('.recipe-item').length;
 		var nextCount = currentCount + 1;
 
-		var $restaurantItem = $('#restaurant-item-1').clone().prop('id', 'restaurant-item-' + nextCount);
+		var $recipeItem = $('#recipe-item-1').clone().prop('id', 'recipe-item-' + nextCount);
 
 		// Change IDs
-		$restaurantItem.find("label[for='1']").prop('for', nextCount);
-		$restaurantItem.find("img").prop('id', 'upload' + nextCount);
-		$restaurantItem.find("input[type='file']").prop('id', nextCount);
-		$restaurantItem.find("img").prop('src', '/public/uploads/post_restaurant/default.png');
-		$restaurantItem.find("input[name='dish']").val('');
-		$restaurantItem.find("input[name='description']").val('');
-		$restaurantItem.find("input[name='price']").val('');
-		$restaurantItem.find("input[name='image']").val('');
-		$restaurantItem.find("textarea").val('');
-		$restaurantItem.insertAfter('div.restaurant-item:last');
+		$recipeItem.find("label[for='1']").prop('for', nextCount);
+		$recipeItem.find("img").prop('id', 'upload' + nextCount);
+		$recipeItem.find("input[type='file']").prop('id', nextCount);
+		$recipeItem.find("img").prop('src', '/public/uploads/post_recipe/default.png');
+		$recipeItem.find("input[name='dish']").val('');
+		$recipeItem.find("input[name='description']").val('');
+		$recipeItem.find("input[name='price']").val('');
+		$recipeItem.find("input[name='image']").val('');
+		$recipeItem.find("textarea").val('');
+		$recipeItem.insertAfter('div.recipe-item:last');
 	}
 
 	$(function () {
@@ -100,7 +100,7 @@
 {{!-- <div class='container'>
 	<div class="modal-content">
 		<div class="modal-header mb-0">
-			<h5 class="modal-title">Post Restaurant</h5>
+			<h5 class="modal-title">Post recipe</h5>
 		</div>
 
 		<div class="modal-body py-0">
