@@ -11,9 +11,17 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="/public/material/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/material/css/mdb.min.css">
     <link rel="stylesheet" href="/public/css/main.css">
+    
+    {{!-- Loading in scripts --}}
+    <script type="text/javascript" src="/public/material/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/material/js/popper.min.js"></script>
+    <script type="text/javascript" src="/public/material/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/public/material/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/public/js/views.js"></script>
 </head>
 
 {{> nav }}
@@ -21,12 +29,6 @@
 <body>
     {{!-- Body --}}
     {{{body}}}
-
-    <script type="text/javascript" src="/public/material/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/public/material/js/popper.min.js"></script>
-    <script type="text/javascript" src="/public/material/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/public/material/js/mdb.min.js"></script>
-    <script type="text/javascript" src="/public/js/views.js"></script>
 </body>
 
 {{> footer }}

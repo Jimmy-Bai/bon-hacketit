@@ -7,12 +7,12 @@ const PostRestaurantSchema = new Mongoose.Schema({
     user_uuid: {type: Number, required: true},
     restaurant_name: {type: String, required: true},
     item_list: {type: [{image: String, name: String, description: String, price: String}],default: []},
-    date: {type: Date, required: true},
-    tag_list: {type: [String], default: []},
+    date: {type: String, required: true},
     view_list: {type: [Number], default: []}, 
     like_list: {type: [Number], default: []}, 
     star_list: {type: [Number], default: []},
-    perm_tag: {type: String, default: 'restaurant'}
+    perm_tag: {type: String, default: 'restaurant'},
+    comments_list: {type: [{Number, String}], default: []}
 });
 
 // Export schema

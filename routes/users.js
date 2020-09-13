@@ -15,7 +15,7 @@ const UserProfileSchema = require('../db/user_profile');
 // Multer setup
 const Storage = Multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, RootDir + '/uploads/pfp');
+        cb(null, RootDir + '/public/uploads/pfp');
     },
     filename: (req, file, cb) => {
         let filetype = '';
@@ -35,11 +35,15 @@ const Upload = Multer({ storage: Storage });
 
 module.exports = function (io) {
     Router.get('/signup', ForwardAuthenticated, (req, res) => {
-        res.render('signup');
+        res.render('signup', {
+            authenticated: req.isAuthenticated()
+        });
     });
 
     Router.get('/signin', ForwardAuthenticated, (req, res) => {
-        res.render('signin');
+        res.render('signin', {
+            authenticated: req.isAuthenticated()
+        });
     });
 
     // Signup POST request
