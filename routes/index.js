@@ -54,7 +54,7 @@ module.exports = function (io) {
         res.render('dashboard', {
             authenticated: req.isAuthenticated(),
             pfp: `/public/uploads/pfp/${_user.pfp}`,
-            post_list: _post
+            post_list: _post.reverse()
         });
     });
 
