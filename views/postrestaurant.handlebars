@@ -1,29 +1,90 @@
-<div class='container'>
+<div class='container d-flex justify-content-center align-items-center force-center'>
     <div class="modal-content">
         <div class="modal-header mb-0">
-            <h5 class="modal-title">Post Restaurant</h5>
+            <h5 class="modal-title">Make a restaurant post!</h5>
         </div>
-
         <div class="modal-body py-0">
             {{>alerts}}
-            <form method="POST" action="/users/signup" name="postrestaraunt">
-                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                <input type="file" accept="image/*" name=image" id=file" style="display: none;">
+            <form method="POST" action="/post/restaurant" name="postrestaraunt" runat="server">
+                {{!-- Restaurant Name --}}
+                <div class="form-group">
+                    <label for="restaurant">Restaurant</label>
+                    <input type="text" class="form-control" name="restaurant" id="restaurant" required>
+                </div>
+                {{!-- Item card --}}
+                <div class="container px-0">
+                    <div class="row restaurant-item" id="restaurant-item-1">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <label for="1">
+                                        <img src="/public/uploads/post_restaurant/default.png" class="img-thumbnail"
+                                            id="upload1">
+                                    </label>
+                                    <input type="file" class="custom-file-input d-none thumbnail" name="image" id="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label for="dish">Dish Name</label>
+                                <input type="text" class="form-control" name="dish" id="dish" placeholder="Dish name?"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" aria-label="With textarea" name="description"
+                                    id="description" placeholder="Description? (Optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" class="form-control" name="price" id="price"
+                                    placeholder="Price? (Optional)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <p><label>Dish Name</label></p>
-                <input type="text" name="dish">
-
-                <p><label>Restaurant</label></p>
-                <input type="text" name="restaurant">
-
-                <p><label>Description</label></p>
-                <input type="text" name="description">
-
-                <p><label>Cost</label></p>
-                <input type="text" name="cost">
-
-                <input type="submit" value="Submit">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary m-0 teal darken-3">Post!</button>
+                    <button type="button" class="btn btn-light light-green lighten-4" id="add-post-restaurant" onclick="addItems()">Add</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    // When browsing an image, preview it
+    function renderImage(input, element) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#upload' + element).attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Add more another item group
+    function addItems() {
+        var currentCount = $('.restaurant-item').length;
+        var nextCount = currentCount + 1;
+
+        var $restaurantItem = $('#restaurant-item-1').clone().prop('id', 'restaurant-item-' + nextCount);
+
+        // Change IDs
+        $restaurantItem.find("label[for='1']").prop('for', nextCount);
+        $restaurantItem.find("img").prop('id', 'upload' + nextCount);
+        $restaurantItem.find("input[type='file']").prop('id', nextCount);
+        $restaurantItem.insertAfter('div.restaurant-item:last');
+    }
+
+    $(function () {
+        $(".thumbnail").on('change', function () {
+            console.log(this.id);
+            renderImage(this, this.id);
+        });
+    });
+</script>
