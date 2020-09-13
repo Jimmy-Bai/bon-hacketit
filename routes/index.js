@@ -67,7 +67,8 @@ module.exports = function (io) {
 
         res.render('profile', {
             authenticated: req.isAuthenticated(),
-            pfp: '/public/uploads/pfp/' + _user.pfp
+            pfp: '/public/uploads/pfp/' + _user.pfp,
+            userprofile: _user_profile
         });
     });
 
