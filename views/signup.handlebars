@@ -9,28 +9,28 @@
             <div class="modal-body py-0">
                 <form action="/users/signup" method="POST" name="signup" enctype="multipart/form-data">
                     {{>alerts}}
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" id="username"
-                            placeholder="Enter username" required>
+                            required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password"
-                            placeholder="Enter your password" required>
+                            required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <label for="password2">Confirm your password</label>
                         <input type="password" class="form-control" name="password2" id="password2"
-                            placeholder="Enter your password again" required>
+                            required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <div class="custom-file">
                             <label class="custom-file-label" for="image">Choose a profile picture (Optional)</label>
                             <input type="file" class="custom-file-input" name="image" id="image">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <button type="submit" class="btn btn-primary w-100 m-0 teal darken-3">Sign Up</button>
                     </div>
                 </form>
