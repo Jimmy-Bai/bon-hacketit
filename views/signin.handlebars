@@ -9,15 +9,15 @@
             <div class="modal-body py-0">
                 <form action="/users/signin" method="POST" name="signin">
                     {{>alerts}}
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" id="username"
-                            placeholder="Enter username" required>
+                            required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group md-form">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password"
-                            placeholder="Enter your password" required>
+                            required>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary w-100 m-0 teal darken-3">Login</button>

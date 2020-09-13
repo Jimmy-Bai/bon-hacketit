@@ -101,7 +101,10 @@ module.exports = function (io) {
     });
 
     // Home page after login
-    Router.get('/post', (req, res) => {
+    Router.get('/:uuid', (req, res) => {
+        let _uuid = req.params.uuid;
+        console.log(_uuid);
+
         res.render('post');
     });
 

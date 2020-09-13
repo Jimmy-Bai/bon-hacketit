@@ -17,10 +17,10 @@ function topFunction() {
 } 
 
 // Find container with id navBtns using jQuery
-$("#navBtns").find("button").click(function(){
-  $("button").removeClass("active");
-  $(this).addClass("active");
-});
+// $("#navBtns").find("button").click(function(){
+//   $("button").removeClass("active");
+//   $(this).addClass("active");
+// });
 
 // Stop carousel cycling
 $('.carousel').carousel({

@@ -47,7 +47,7 @@ module.exports = function (io) {
     Router.get('/dashboard', EnsureAuthenticated, async (req, res) => {
         let _user, _post;
         // If user is authenticated, get user information
-        if (req.isAuthenticated) {           
+        if (req.isAuthenticated) {
             _user = await UserSchema.findOne({ uuid: req.user.uuid });
             _post = await PostRestaurantSchema.find();
         }
@@ -55,12 +55,13 @@ module.exports = function (io) {
         res.render('dashboard', {
             authenticated: req.isAuthenticated(),
             pfp: `/public/uploads/pfp/${_user.pfp}`,
-            post_list: _post
+            post_list: _post.reverse()
         });
     });
 
     // Profile page
     Router.get('/dashboard/profile', EnsureAuthenticated, async (req, res) => {
+<<<<<<< HEAD
 
         let _user_profile = await UserProfileSchema.findOne({ uuid: req.user.uuid});
         console.log(_user_profile);
@@ -69,6 +70,15 @@ module.exports = function (io) {
             username: _user_profile.username,
             following_list: _user_profile.following_list,
             follower_list: _user_profile.follower_list,
+=======
+        let _user_profile = await UserProfileSchema.findOne({ uuid: req.user.uuid });
+        let _user = await UserSchema.findOne({ uuid: req.user.uuid });
+        console.log(_user);
+
+        res.render('profile', {
+            authenticated: req.isAuthenticated(),
+            pfp: '/public/uploads/pfp/' + _user.pfp
+>>>>>>> d6dc5e24d540d663a666044979a8943243f427b5
         });
     });
 
