@@ -82,7 +82,7 @@
     }
 
     $(function () {
-        $(".thumbnail").on('change', function () {
+        $(".thumbnail").on('change', '.restaurant-item', function () {
             console.log(this.id);
             renderImage(this, this.id);
         });
