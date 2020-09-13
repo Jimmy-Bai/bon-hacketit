@@ -21,3 +21,8 @@ $("#navBtns").find("button").click(function(){
   $("button").removeClass("active");
   $(this).addClass("active");
 });
+
+// Stop carousel cycling
+$('.carousel').carousel({
+  interval: false,
+});
