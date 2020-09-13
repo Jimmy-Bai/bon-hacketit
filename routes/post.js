@@ -30,16 +30,35 @@ const Storage = Multer.diskStorage({
 const Upload = Multer({ storage: Storage });
 const UserProfileSchema = require('../db/user_profile');
 const PostRestaurantSchema = require('../db/post_restaurant');
+const UserSchema = require('../db/user');
 
 module.exports = function (io) {
     // Make restaurant form post
-    Router.get('/restaurant', (req, res) => {
-        res.render('postrestaurant');
+    Router.get('/restaurant', EnsureAuthenticated, async (req, res) => {
+        let _user;
+        // If user is authenticated, get user information
+        if (req.isAuthenticated) {           
+            _user = await UserSchema.findOne({ uuid: req.user.uuid });
+        }
+
+        res.render('postrestaurant', {
+            authenticated: req.isAuthenticated(),
+            pfp: `/public/uploads/pfp/${_user.pfp}`
+        });
     });
 
     // Make recipe form post
-    Router.get('/recipe', (req, res) => {
-        res.render('postrecipe');
+    Router.get('/recipe', EnsureAuthenticated, async (req, res) => {
+        let _user;
+        // If user is authenticated, get user information
+        if (req.isAuthenticated) {           
+            _user = await UserSchema.findOne({ uuid: req.user.uuid });
+        }
+
+        res.render('postrecipe', {
+            authenticated: req.isAuthenticated(),
+            pfp: `/public/uploads/pfp/${_user.pfp}`
+        });
     });
 
     // Restaurant post request
