@@ -1,7 +1,106 @@
-<div class='container'>
+<div class='container d-flex justify-content-center align-items-center force-center'>
 	<div class="modal-content">
 		<div class="modal-header mb-0">
-			<h5 class="modal-title">Post Restaurant</h5>
+			<h5 class="modal-title display-4">Make a recipe post!</h5>
+		</div>
+		<div class="modal-body py-0">
+			{{>alerts}}
+			<form method="POST" action="/post/recipe" name="postrecipe" runat="server"
+				enctype="multipart/form-data">
+				{{!-- Recipe Name --}}
+				<div class="form-group md-form">
+					<label for="recipe">recipe</label>
+					<input type="text" class="form-control" name="recipe" id="recipe" required>
+				</div>
+				{{!-- Item card --}}
+				<div class="container px-0">
+					<div class="row recipe-item" id="recipe-item-1">
+						<div class="col-3">
+							<div class="form-group">
+								<div class="custom-file">
+									<label for="1">
+										<img src="/public/uploads/post_recipe/default.png" class="img-thumbnail"
+											id="upload1" style="height: 256px; width: 256px;">
+									</label>
+									<input type="file" multiple class="custom-file-input d-none thumbnail" name="image"
+										id="1">
+								</div>
+							</div>
+						</div>
+						<div class="col-8 ml-auto">
+							<div class="form-group md-form">
+								<label for="dish">Dish Name</label>
+								<input type="text" class="form-control" name="dish" id="dish" required>
+							</div>
+							<div class="form-group md-form">
+								<label for="description">Description (Optional)</label>
+								<textarea class="form-control md-textarea pt-3" aria-label="With textarea"
+									name="description" id="description"></textarea>
+							</div>
+							<div class="form-group md-form">
+								<label for="price">Price (Optional)</label>
+								<input type="text" class="form-control" name="price" id="price">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group row mt-2">
+					<button type="submit" class="btn btn-dark teal darken-3 ml-4">Post!</button>
+					<button type="button" class="btn btn-light light-green lighten-4 ml-auto mr-4"
+						id="add-post-recipe" onclick="addItems()">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	// When browsing an image, preview it
+	function renderImage(input, element) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#upload' + element).attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	// Add more another item group
+	function addItems() {
+		var currentCount = $('.recipe-item').length;
+		var nextCount = currentCount + 1;
+
+		var $recipeItem = $('#recipe-item-1').clone().prop('id', 'recipe-item-' + nextCount);
+
+		// Change IDs
+		$recipeItem.find("label[for='1']").prop('for', nextCount);
+		$recipeItem.find("img").prop('id', 'upload' + nextCount);
+		$recipeItem.find("input[type='file']").prop('id', nextCount);
+		$recipeItem.find("img").prop('src', '/public/uploads/post_recipe/default.png');
+		$recipeItem.find("input[name='dish']").val('');
+		$recipeItem.find("input[name='description']").val('');
+		$recipeItem.find("input[name='price']").val('');
+		$recipeItem.find("input[name='image']").val('');
+		$recipeItem.find("textarea").val('');
+		$recipeItem.insertAfter('div.recipe-item:last');
+	}
+
+	$(function () {
+		$(document).on('change', '.thumbnail', function () {
+			console.log(this.id);
+			renderImage(this, this.id);
+		});
+	});
+</script>
+
+
+{{!-- <div class='container'>
+	<div class="modal-content">
+		<div class="modal-header mb-0">
+			<h5 class="modal-title">Post recipe</h5>
 		</div>
 
 		<div class="modal-body py-0">
@@ -23,4 +122,4 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> --}}

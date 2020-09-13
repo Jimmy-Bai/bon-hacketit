@@ -61,14 +61,18 @@ module.exports = function (io) {
 
     // Profile page
     Router.get('/dashboard/profile', EnsureAuthenticated, async (req, res) => {
-        let _user_profile = await UserProfileSchema.findOne({ uuid: req.user.uuid });
+
+        let _user_profile = await UserProfileSchema.findOne({ uuid: req.user.uuid});
         let _user = await UserSchema.findOne({ uuid: req.user.uuid });
-        console.log(_user);
+        let _posts = await PostRestaurantSchema.find({post_uuid: _user_profile.post_list});
 
         res.render('profile', {
             authenticated: req.isAuthenticated(),
-            pfp: '/public/uploads/pfp/' + _user.pfp,
-            userprofile: _user_profile
+            username: _user_profile.username,
+            following_list: _user_profile.following_list,
+            follower_list: _user_profile.follower_list,
+            posts: _posts,
+            pfp: '/public/uploads/pfp/' + _user.pfp
         });
     });
 
